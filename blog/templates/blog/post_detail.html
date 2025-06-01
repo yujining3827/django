@@ -1,17 +1,97 @@
-<!DOCTYPE HTML>
-<html lang ="ko">
+<!DOCTYPE html>
+<html lang="ko">
+
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>{{ post.title }} - Blog</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'blog/css/blog-post.css' %}" media="screen">
 </head>
+
 <body>
-<nav>
-    <a href ="/blog">Blog</a>
-</nav>
-<h1>{{ post.title }}</h1>
-<h4>{{ post.created_at }}</h4>
-<p>{{ post.content }}</p>
-<hr/>
-<h3>여기 댓글이 들어올 수 있겠죠?</h3>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">My Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarResponsive" aria-controls="navbarResponsive"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about_me/">About Me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container mt-5 pt-4">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+        <h1 class="mt-4">{{ post.title }}</h1>
+        <p class="lead">by <a href="#">작성자 (예정)</a></p>
+        <p>Posted on {{ post.created_at }}</p>
+        <hr>
+        <img class="img-fluid rounded" src="https://placehold.it/900x300" alt="대표 이미지">
+        <hr>
+        <p>{{ post.content }}</p>
+        <hr>
+
+        <!-- Comments -->
+        <div class="card my-4">
+          <h5 class="card-header">댓글 남기기:</h5>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-md-4">
+        <div class="card my-4">
+          <h5 class="card-header">Side Widget</h5>
+          <div class="card-body">
+            필요한 위젯이나 소개 텍스트를 넣으세요.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark mt-5">
+    <div class="container">
+      <p class="m-0 text-center text-white">&copy; Your Blog 2025</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>
