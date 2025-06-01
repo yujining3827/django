@@ -19,79 +19,125 @@
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/">My Blog</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-              data-target="#navbarResponsive" aria-controls="navbarResponsive"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/blog/">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about_me/">About Me</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">My Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about_me/">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog/">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about_me/">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Page Content -->
-  <div class="container mt-5 pt-4">
+    <!-- Page Content -->
+    <div class="container mt-5 pt-4">
     <div class="row">
-      <!-- Post Content Column -->
-      <div class="col-lg-8">
-        <h1 class="mt-4">{{ post.title }}</h1>
-        <p class="lead">by <a href="#">작성자 (예정)</a></p>
-        <p>Posted on {{ post.created_at }}</p>
-        <hr>
-        <img class="img-fluid rounded" src="https://placehold.it/900x300" alt="대표 이미지">
-        <hr>
-        <p>{{ post.content }}</p>
-        <hr>
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+            <h1 class="mt-4">{{ post.title }}</h1>
+            <p class="lead">by <a href="#">작성자 (예정)</a></p>
+            <p>Posted on {{ post.created_at }}</p>
+            <hr>
 
-        <!-- Comments -->
-        <div class="card my-4">
-          <h5 class="card-header">댓글 남기기:</h5>
-          <div class="card-body">
-            <form>
-              <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
+            <!-- 대표 이미지 900x300 -->
+          <img src="{% if post.head_image %}{{ post.head_image.url }}{% else %}https://via.placeholder.com/750x300?text=750x300{% endif %}"
+               style="width: 100%; height: 300px; object-fit: cover; background-color: #ddd;"/>
+            <hr>
+            <p>{{ post.content }}</p>
+            <hr>
+
+            <!-- Comments -->
+            <div class="card my-4">
+                <h5 class="card-header">댓글 남기기:</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- Sidebar -->
-      <div class="col-md-4">
-        <div class="card my-4">
-          <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            필요한 위젯이나 소개 텍스트를 넣으세요.
-          </div>
+        <!-- Sidebar Column -->
+        <div class="col-md-4">
+            <div class="card my-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-append">
+                                <button class="btn btn-secondary" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">HTML</a></li>
+                                    <li><a href="#">Freebies</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#">JavaScript</a></li>
+                                    <li><a href="#">CSS</a></li>
+                                    <li><a href="#">Tutorials</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    필요한 위젯이나 소개 텍스트를 넣으세요.
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark mt-5">
-    <div class="container">
-      <p class="m-0 text-center text-white">&copy; Your Blog 2025</p>
-    </div>
-  </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark mt-5">
+        <div class="container">
+            <p class="m-0 text-center text-white">&copy; Your Blog 2025</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
